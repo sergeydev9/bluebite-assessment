@@ -132,5 +132,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Developer Notes
 
-* ...
-* ... 
+* `axios` and `react-query` dependencies are added for working with API.
+* No other dependencies, such as CSS frameworks, are added because UI is simple enough to do it with a plain module.css approach.
+* Assuming that list with id 0 is the only list to render by default, and the other lists are rendered when corresponding condition evaluates to true.
+* A button supports `show`, `hide`, and `location` icons, it is determined by `options.value` and `options.variable`.

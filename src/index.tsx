@@ -1,34 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Link,
-    Route
-} from "react-router-dom";
+import { Router } from "./Router";
+import { QueryClient, QueryClientProvider } from 'react-query'
+import axios from "axios/index";
 
-const Root = () => (
-    <div>
-        <Link to="/page-one">Page One</Link><br />
-        <Link to="/page-two">Page Two</Link><br />
-        <Link to="/page-three">Page Three</Link>
-    </div>
-);
+const queryClient = new QueryClient()
+
+axios.defaults.baseURL = 'http://localhost:3030';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Router>
-            <Switch>
-                <Route path="/" exact>
-                    <Root />
-                </Route>
-                <Route path="/:id">
-                    <App />
-                </Route>
-            </Switch>
-        </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <Router />
+    </QueryClientProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
